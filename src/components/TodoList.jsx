@@ -7,18 +7,19 @@ function TodoList() {
   const todos = useSelector(state => state.todos.list);
 
   return (
-    <div style={{ marginTop: "16px" }}>
+    <ul style={{ marginTop: "16px" }}>
       {todos.map((todo, index) => (
-        <div style={{ marginBottom: "2px" }} key={index}>
+        <li style={{ marginBottom: "2px" }} key={index} data-id={todo.id}>
           <input
             type="text"
+            aria-label="list-input"
             value={todo.text}
             onChange={(e) => dispatch(todoModified({ id: todo.id, text: e.target.value }))}
           />
-          <button onClick={() => dispatch(todoRemoved({ id: todo.id }))}>DELETE TODO</button>
-        </div>
+          <button className='deleteBtn' onClick={() => dispatch(todoRemoved({ id: todo.id }))}>DELETE TODO</button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

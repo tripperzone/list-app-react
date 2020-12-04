@@ -18,6 +18,7 @@ function TodoForm() {
       <input
         type="text"
         className="input"
+        aria-label="todo-input"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
